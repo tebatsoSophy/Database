@@ -1,0 +1,20 @@
+1. Import persons.csv:
+LOAD CSV WITH HEADERS FROM 'file:///persons.csv' AS row
+MERGE (p:Person {id: toInteger(row.ID)})
+SET p.name = row.`name;`
+
+
+2. Show database contents:
+MATCH(n) RETURN n
+
+MATCH (p:Person)
+SET p.name = trim(replace(p.name, ';', ''));
+
+3. Create FOLLOWS relationships:
+LOAD CSV WITH HEADERS FROM 'file:///follows.csv' AS row
+MATCH (a:Person {name:row.person})
+MATCH (b:Person {name: row.`follows;`})
+MERGE (a)-[:FOLLOWS]->(b);
+
+4. Show updated contents:
+MATCH p=()-[]->() RETURN p
