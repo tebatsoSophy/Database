@@ -1,7 +1,7 @@
 
 ### **Root README.md** (in the main databse folder)
 ```markdown
-# Database Course Practicals
+# Databases queries and Code
 
 This repository contains all database-related work including practicals for COS326.
 
